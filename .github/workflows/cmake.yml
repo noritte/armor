@@ -21,7 +21,7 @@ jobs:
       shell: bash
       run: |
           sudo apt-get install libudev-dev
-          sudo apt-get install boost
+          sudo apt-get install libboost-all-dev
           git clone --single-branch --branch OpenSSL_1_1_1-stable --depth 1 https://github.com/openssl/openssl.git
           cd openssl
           ./Configure linux-x86_64 no-shared
