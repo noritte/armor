@@ -20,7 +20,6 @@ jobs:
       working-directory: ${{github.workspace}}
       shell: bash
       run: |
-          mkdir armor
           mv * armor/
           mv .* armor/
           sudo apt-get install libudev-dev
