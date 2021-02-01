@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependeces
-      working-directory: ${{github.workspace}}
+      working-directory: ../${{github.workspace}}
       shell: bash
       run: |
           sudo apt-get install libudev-dev
@@ -29,7 +29,7 @@ jobs:
           cd ..
           git clone https://github.com/noritte/lmdb.git
     - name: CMAKE
-      working-directory: ${{github.workspace}}
+      working-directory: ../${{github.workspace}}
       shell: bash
       run: |
           mkdir build
