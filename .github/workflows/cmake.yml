@@ -46,4 +46,6 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/bin
       shell: bash
-      run: armord --help
+      run: |
+          ./armord --version
+          ./walletd --version
