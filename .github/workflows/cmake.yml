@@ -21,7 +21,7 @@ jobs:
       shell: bash
       run: |
           mkdir armor
-          mv `\ls -1 * | grep -v armor` armor/
+          mv $(echo * | sed s:armor::g) armor/
           mv .* armor/
           sudo apt-get install libudev-dev
           sudo apt-get install libboost-all-dev
