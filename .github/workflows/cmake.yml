@@ -20,11 +20,9 @@ jobs:
       working-directory: ${{github.workspace}}
       shell: bash
       run: |
-          echo $PWD
-          mv $(echo * | sed s:armor::g | sed s:.::g | sed s:..::g) armor/
-          mv .* armor/
           sudo apt-get install libudev-dev
           sudo apt-get install libboost-all-dev
+          cd ..
           git clone --single-branch --branch OpenSSL_1_1_1-stable --depth 1 https://github.com/openssl/openssl.git
           cd openssl
           ./Configure linux-x86_64 no-shared
@@ -32,7 +30,7 @@ jobs:
           cd ..
           git clone https://github.com/noritte/lmdb.git
     - name: CMAKE
-      working-directory: ${{github.workspace}}/armor
+      working-directory: ${{github.workspace}}
       shell: bash
       run: |
           mkdir build
@@ -40,12 +38,12 @@ jobs:
           cmake ..
           
     - name: Build
-      working-directory: ${{github.workspace}}/armor/build
+      working-directory: ${{github.workspace}}/build
       shell: bash
       run: |
         make
 
     - name: Test
-      working-directory: ${{github.workspace}}/armor/bin
+      working-directory: ${{github.workspace}}/bin
       shell: bash
       run: armord --help
