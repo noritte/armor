@@ -20,9 +20,8 @@ jobs:
       working-directory: ${{github.workspace}}
       shell: bash
       run: |
-          mkdir .armor
-          mv * .armor/
-          mv .armor/ armor/
+          mkdir armor
+          mv `\ls -1 * | grep -v armor` armor/
           mv .* armor/
           sudo apt-get install libudev-dev
           sudo apt-get install libboost-all-dev
